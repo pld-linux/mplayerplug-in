@@ -9,17 +9,15 @@ Source0:	http://download.sf.net/mplayerplug-in/mplayerplug-in_v%{version}.tar.gz
 Source1:	http://download.sf.net/mplayerplug-in/mini.tar.bz2
 URL:		http://mplayerplug-in.sourceforge.net/
 Requires:	mplayer >= 0.90rc4
-#BuildRequires:	mozilla-embedded-devel
-#PreReq:		mozilla-embedded
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-mplayerplug-in is a browser plugin that uses mplayer to play
-videos from websites.
+mplayerplug-in is a browser plugin that uses mplayer to play videos
+from websites.
 
 %description -l pl
 mplayerplug-in jest wtyczk± wykorzystuj±c± mplayera do odtwarzania
-klipów filmowych ze stron www. 
+klipów filmowych ze stron www.
 
 %prep
 %setup -q -n mplayerplug-in -a1
