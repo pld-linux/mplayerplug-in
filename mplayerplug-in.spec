@@ -12,6 +12,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	gtk+2-devel
 BuildRequires:	mozilla-devel
+BuildRequires:	pkgconfig
 Requires:	mplayer >= 1.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
