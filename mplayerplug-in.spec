@@ -23,7 +23,7 @@ from websites.
 
 %description -l pl
 mplayerplug-in jest wtyczk± wykorzystuj±c± mplayera do odtwarzania
-klipów filmowych ze stron www.
+klipów filmowych ze stron WWW.
 
 %prep
 %setup -q -n mplayerplug-in
