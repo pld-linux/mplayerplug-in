@@ -1,7 +1,7 @@
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mozilla-plugin-mplayer
-Version:	0.40
+Version:	0.71
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
