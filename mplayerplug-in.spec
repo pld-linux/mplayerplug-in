@@ -22,7 +22,10 @@ klipów filmowych ze stron www.
 %prep
 %setup -q -n mplayerplug-in -a1
 
-touch mplayerplug-in.conf
+echo "use-gui=yes" > mplayerplug-in.conf
+
+cd mini
+mv README ../README-skin_mini
 
 %build
 %{__make} \
@@ -32,16 +35,18 @@ touch mplayerplug-in.conf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/mozilla/plugins,%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_libdir}/mozilla/plugins,%{_sysconfdir},%{_datadir}/mplayer/Skin/mini}
 
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install mini/{skin,*.png} $RPM_BUILD_ROOT%{_datadir}/mplayer/Skin/mini
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README ChangeLog TODO
+%doc ChangeLog TODO README README-skin_mini
 %attr(755,root,root) %{_libdir}/mozilla/plugins/*.so
+%{_datadir}/mplayer/Skin/mini
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mplayerplug-in.conf
