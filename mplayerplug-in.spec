@@ -30,7 +30,7 @@ klipów filmowych ze stron WWW.
 
 %package -n mozilla-firefox-plugin-mplayer
 Summary:	Embedded Video Player for Mozilla Firefox
-Summary(pl):	Wbudowany odtwarzacz klipów filmwych dla Mozilli Firefox
+Summary(pl):	Wbudowany odtwarzacz klipów filmowych dla Mozilli Firefox
 Group:		X11/Applications/Multimedia
 PreReq:		mozilla-firefox
 Requires:	mplayer >= 1.0
