@@ -11,6 +11,7 @@ URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	gtk+2-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
 Requires:	mplayer >= 1.0
