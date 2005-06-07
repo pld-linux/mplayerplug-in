@@ -1,3 +1,6 @@
+# TODO
+# - share the plugin with two browsers
+# - add more browsers (konqueror/opera)
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mozilla-plugin-mplayer
@@ -25,6 +28,15 @@ from websites.
 mplayerplug-in jest wtyczk± wykorzystuj±c± mplayera do odtwarzania
 klipów filmowych ze stron WWW.
 
+%package -n mozilla-firefox-plugin-mplayer
+Summary:	Embedded Video Player for Mozilla Firefox
+Group:		X11/Applications/Multimedia
+PreReq:		mozilla-firefox
+Requires:	mplayer >= 1.0
+
+%description -n mozilla-firefox-plugin-mplayer
+This package contains plugin for Mozilla Firefox browser.
+
 %prep
 %setup -q -n mplayerplug-in
 
@@ -36,9 +48,10 @@ klipów filmowych ze stron WWW.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/mozilla/plugins,%{_sysconfdir}/mplayer}
+install -d $RPM_BUILD_ROOT{%{_libdir}/{mozilla,mozilla-firefox}/plugins,%{_sysconfdir}/mplayer}
 
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins
+install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla-firefox/plugins
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 
@@ -51,3 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/mozilla/plugins/*.so
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mplayerplug-in.conf
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mplayer/mplayerplug-in.types
+
+%files -n mozilla-firefox-plugin-mplayer
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/mozilla-firefox/plugins/*.so
