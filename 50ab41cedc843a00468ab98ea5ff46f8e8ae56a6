@@ -1,0 +1,4 @@
+- Version: 1.0
+- GUI disabled at it breaks the plugin
+- "mini" mplayer skin removed - it not needed when GUI is disabled
+  warning: this plugin crashes browser after a movie is played :-(
