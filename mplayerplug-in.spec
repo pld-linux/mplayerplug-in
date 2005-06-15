@@ -1,6 +1,8 @@
 # TODO
 # - share the plugin with two browsers
-# - add more browsers (konqueror/opera)
+# - add more browsers (konqueror)
+# - plugins shouldn't be only symlinks for one file?
+
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mozilla-plugin-mplayer
@@ -42,6 +44,20 @@ This package contains plugin for Mozilla Firefox browser.
 Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
 filmowych ze stron WWW.
 
+%package -n opera-plugin-mplayer
+Summary:        Embedded Video Player for Opera
+Summary(pl):    Wbudowany odtwarzacz klipów filmowych dla Opery
+Group:          X11/Applications/Multimedia
+PreReq:         opera
+Requires:       mplayer >= 1.0
+
+%description -n opera-plugin-mplayer
+This package contains plugin for Opera browser.
+
+%description -n  opera-plugin-mplayer -l pl
+Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
+filmowych ze stron WWW.
+
 %prep
 %setup -q -n mplayerplug-in
 
@@ -53,10 +69,11 @@ filmowych ze stron WWW.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/{mozilla,mozilla-firefox}/plugins,%{_sysconfdir}/mplayer}
+install -d $RPM_BUILD_ROOT{%{_libdir}/{mozilla,mozilla-firefox,opera}/plugins,%{_sysconfdir}/mplayer}
 
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla-firefox/plugins
+install *.so $RPM_BUILD_ROOT%{_libdir}/opera/plugins
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 
@@ -73,3 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n mozilla-firefox-plugin-mplayer
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/mozilla-firefox/plugins/*.so
+
+%files -n opera-plugin-mplayer
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/opera/plugins/*.so
