@@ -1,8 +1,11 @@
 # TODO
-# - share the plugin with two browsers
 # - plugins shouldn't be only symlinks for one file?
 # - (where shoild be this file)? ______________/
-
+# - i (glen) propose to put all netscape-compatible plugins to
+#   %{_libdir}/nsplugins and all browser plugin packages symlink there. the
+#   %{_libdir}/nsplugins should itself go to FHS? as if *all* NS-compatible
+#   plugins go there, there's no one parent for them :), or nsplugins.spec could
+#   do too, if FHS won't do.
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mozilla-plugin-mplayer
