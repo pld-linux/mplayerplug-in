@@ -1,13 +1,13 @@
 # TODO
 # - share the plugin with two browsers
-# - add more browsers (konqueror)
 # - plugins shouldn't be only symlinks for one file?
+# - (where shoild be this file)? ______________/
 
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mozilla-plugin-mplayer
 Version:	2.85
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
@@ -56,7 +56,21 @@ This package contains plugin for Opera browser.
 
 %description -n  opera-plugin-mplayer -l pl
 Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
-filmowych ze stron WWW.
+filmowych ze stron WWW w przegladarce Opera.
+
+%package -n konqueror-plugin-mplayer
+Summary:        Embedded Video Player for Opera
+Summary(pl):    Wbudowany odtwarzacz klipów filmowych dla Opery
+Group:          X11/Applications/Multimedia
+PreReq:         konqueror
+Requires:       mplayer >= 1.0
+
+%description -n konqueror-plugin-mplayer
+This package contains plugin for konqueror browser.
+
+%description -n  konqueror-plugin-mplayer -l pl
+Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
+filmowych ze stron WWW w przegladarce konqueror.
 
 %prep
 %setup -q -n mplayerplug-in
@@ -69,11 +83,13 @@ filmowych ze stron WWW.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/{mozilla,mozilla-firefox,opera}/plugins,%{_sysconfdir}/mplayer}
+install -d $RPM_BUILD_ROOT{%{_libdir}/{mozilla,mozilla-firefox,opera}/plugins,%{_sysconfdir}/mplayer} \
+	$RPM_BUILD_ROOT%{_libdir}/kde3/plugins/konqueror
 
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins
 install *.so $RPM_BUILD_ROOT%{_libdir}/mozilla-firefox/plugins
 install *.so $RPM_BUILD_ROOT%{_libdir}/opera/plugins
+install *.so $RPM_BUILD_ROOT%{_libdir}/kde3/plugins/konqueror
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 
@@ -94,3 +110,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n opera-plugin-mplayer
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/opera/plugins/*.so
+
+%files -n konqueror-plugin-mplayer
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde3/plugins/konqueror/*.so
