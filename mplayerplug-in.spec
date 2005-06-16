@@ -44,8 +44,8 @@ Requires:	mplayer >= 1.0
 This package contains plugin for Mozilla Firefox browser.
 
 %description -n  mozilla-firefox-plugin-mplayer -l pl
-Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
-filmowych ze stron WWW.
+Ten pakiet zawiera wtyczkê do u¿ywania mplayera jako odtwarzacza
+klipów filmowych ze stron WWW w przegl±darce Mozilla Firefox.
 
 %package -n opera-plugin-mplayer
 Summary:        Embedded Video Player for Opera
@@ -58,22 +58,22 @@ Requires:       mplayer >= 1.0
 This package contains plugin for Opera browser.
 
 %description -n  opera-plugin-mplayer -l pl
-Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
-filmowych ze stron WWW w przegladarce Opera.
+Ten pakiet zawiera wtyczkê do u¿ywania mplayera jako odtwarzacza
+klipów filmowych ze stron WWW w przegl±darce Opera.
 
 %package -n konqueror-plugin-mplayer
-Summary:        Embedded Video Player for Opera
-Summary(pl):    Wbudowany odtwarzacz klipów filmowych dla Opery
+Summary:        Embedded Video Player for Konqueror
+Summary(pl):    Wbudowany odtwarzacz klipów filmowych dla Konquerora
 Group:          X11/Applications/Multimedia
 PreReq:         konqueror
 Requires:       mplayer >= 1.0
 
 %description -n konqueror-plugin-mplayer
-This package contains plugin for konqueror browser.
+This package contains plugin for Konqueror browser.
 
 %description -n  konqueror-plugin-mplayer -l pl
-Ta paczka zawiera plugin do u¿ywania mplayera jako odtwarzacza klipów
-filmowych ze stron WWW w przegladarce konqueror.
+Ten pakiet zawiera wtyczkê do u¿ywania mplayera jako odtwarzacza
+klipów filmowych ze stron WWW w przegl±darce Konqueror.
 
 %prep
 %setup -q -n mplayerplug-in
