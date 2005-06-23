@@ -16,8 +16,7 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
-# TODO rev
-BuildRequires:	rpmbuild(macros) >= 1.223
+BuildRequires:	rpmbuild(macros) >= 1.224
 Requires:	mplayer >= 2:1.0
 Requires:	browser-plugins
 Obsoletes:	mozilla-plugin-mplayer
