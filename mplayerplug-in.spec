@@ -17,7 +17,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.224
-Requires:	mplayer >= 2:1.0
+Requires:	mplayer >= 1:1.0
 Requires:	browser-plugins
 Obsoletes:	mozilla-plugin-mplayer
 Obsoletes:	mozilla-firefox-plugin-mplayer
