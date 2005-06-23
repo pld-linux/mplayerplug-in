@@ -18,7 +18,7 @@ BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
 # TODO rev
 BuildRequires:	rpmbuild(macros) >= 1.223
-Requires:	mplayer >= 1.0
+Requires:	mplayer >= 2:1.0
 Requires:	browser-plugins
 Obsoletes:	mozilla-plugin-mplayer
 Obsoletes:	mozilla-firefox-plugin-mplayer
