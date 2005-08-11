@@ -7,7 +7,7 @@ Version:	3.05
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Source0:	mplayerplug-in-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
 # Source0-md5:	119c5634af875a712b27b90fdb1a3eb0
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
