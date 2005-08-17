@@ -18,12 +18,12 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.224
-Requires:	mplayer >= 1:1.0-0.pre5
 Requires:	browser-plugins
-Obsoletes:	mozilla-plugin-mplayer
-Obsoletes:	mozilla-firefox-plugin-mplayer
-Obsoletes:	opera-plugin-mplayer
+Requires:	mplayer >= 1:1.0-0.pre5
 Obsoletes:	konqueror-plugin-mplayer
+Obsoletes:	mozilla-firefox-plugin-mplayer
+Obsoletes:	mozilla-plugin-mplayer
+Obsoletes:	opera-plugin-mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_plugindir	%{_libdir}/browser-plugins
@@ -42,8 +42,10 @@ from websites.
 Supported browsers: %{browsers}.
 
 %description -l pl
-mplayerplug-in jest wtyczk± wykorzystuj±c± mplayera do odtwarzania
-klipów filmowych ze stron WWW.
+mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
+odtwarzania klipów filmowych ze stron WWW.
+
+Obs³ugiwane przegl±darki: %{browsers}.
 
 %prep
 %setup -q -n %{name}
@@ -99,5 +101,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_plugindir}/%{name}-qt.so
 %attr(755,root,root) %{_plugindir}/%{name}-rm.so
 %attr(755,root,root) %{_plugindir}/%{name}-wmp.so
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mplayerplug-in.conf
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mplayer/mplayerplug-in.types
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mplayerplug-in.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mplayer/mplayerplug-in.types
