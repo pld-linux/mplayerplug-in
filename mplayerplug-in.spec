@@ -17,8 +17,8 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.224
-Requires:	browser-plugins
+BuildRequires:	rpmbuild(macros) >= 1.236
+Requires:	browser-plugins(%{_target_cpu})
 Requires:	mplayer >= 1:1.0-0.pre5
 Obsoletes:	konqueror-plugin-mplayer
 Obsoletes:	mozilla-firefox-plugin-mplayer
