@@ -1,10 +1,8 @@
-# TODO
-# - cvs move SPECS/{mozilla-plugin-mplayer,mplayerplug-in}.spec,v
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 Version:	3.15
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
