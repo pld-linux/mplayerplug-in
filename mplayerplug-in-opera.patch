@@ -1,0 +1,14 @@
+--- mplayerplug-in/plugingate/np_entry.cpp.orig	2004-02-05 01:34:49.000000000 +0100
++++ mplayerplug-in/plugingate/np_entry.cpp	2006-02-07 15:21:48.000000000 +0100
+@@ -105,8 +105,9 @@
+   if(HIBYTE(aNPNFuncs->version) > NP_VERSION_MAJOR)
+     return NPERR_INCOMPATIBLE_VERSION_ERROR;
+ 
+-  if(aNPNFuncs->size < sizeof(NPNetscapeFuncs))
+-    return NPERR_INVALID_FUNCTABLE_ERROR;
++// commented out for opera
++//  if(aNPNFuncs->size < sizeof(NPNetscapeFuncs))
++//    return NPERR_INVALID_FUNCTABLE_ERROR;
+ 
+   NPNFuncs.size             = aNPNFuncs->size;
+   NPNFuncs.version          = aNPNFuncs->version;
