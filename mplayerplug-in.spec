@@ -66,9 +66,8 @@ from websites. This plugin is adapted for Opera.
 
 %description opera -l pl
 mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
-odtwarzania klipów filmowych ze stron WWW. Ten plugin jest
-dostosowany do Opery.
-
+odtwarzania klipów filmowych ze stron WWW. Ta wtyczka jest
+dostosowana do Opery.
 
 %prep
 %setup -q -n %{name}
