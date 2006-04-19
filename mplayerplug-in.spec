@@ -124,6 +124,12 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- konqueror
 %nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,wmp}.so
 
+%triggerin -- seamonkey
+%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+
+%triggerun -- seamonkey
+%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_plugindir}/*.so
