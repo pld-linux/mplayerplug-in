@@ -26,7 +26,7 @@ Obsoletes:	opera-plugin-mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_plugindir	%{_libdir}/browser-plugins
-%define		browsers	mozilla, mozilla-firefox, konqueror
+%define		browsers	mozilla, mozilla-firefox, konqueror, seamonkey
 
 %description
 mplayerplug-in is a browser plugin that uses mplayer to play videos
