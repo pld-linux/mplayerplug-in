@@ -99,6 +99,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/opera/plugins,%{_plugindir},%{_sysconfdir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install *.so $RPM_BUILD_ROOT%{_plugindir}
+install *.xpt $RPM_BUILD_ROOT%{_plugindir}
 install opera/*.so $RPM_BUILD_ROOT%{_libdir}/opera/plugins
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
@@ -110,31 +111,40 @@ rm -rf $RPM_BUILD_ROOT
 
 %triggerin -- mozilla-firefox
 %nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %%{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerun -- mozilla-firefox
 %nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerin -- mozilla
 %nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerun -- mozilla
 %nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerin -- konqueror
 %nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerun -- konqueror
 %nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerin -- seamonkey
 %nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerun -- seamonkey
 %nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_plugindir}/*.so
+%{_plugindir}/*.xpt
 
 %files common
 %defattr(644,root,root,755)
@@ -145,3 +155,4 @@ rm -rf $RPM_BUILD_ROOT
 %files opera
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/opera/plugins/*.so
+%{_libdir}/opera/plugins/*.xpt
