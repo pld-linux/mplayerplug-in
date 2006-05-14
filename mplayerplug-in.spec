@@ -113,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %triggerin -- mozilla-firefox
 %nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %%{name}-{gmp,qt,rm,wmp}.xpt
+%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,wmp}.xpt
 
 %triggerun -- mozilla-firefox
 %nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,wmp}.so
