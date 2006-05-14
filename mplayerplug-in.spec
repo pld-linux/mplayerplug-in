@@ -3,14 +3,13 @@ Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 %define	snap	20060514
 Version:	3.25
-Release:	2.%{snap}.1
+Release:	2.%{snap}.2
 License:	GPL
 Group:		X11/Applications/Multimedia
 # Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
 Source0:	http://mplayerplug-in.sourceforge.net/mplayerplug-in-daily.tar.gz
-# Source0-md5:	571b6c169df405bd732eb29ddc069d37
+# Source0-md5:	a54445d2d927e47c44ac454534845279
 Patch0:		%{name}-opera.patch
-Patch1:		%{name}-divx.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -75,7 +74,6 @@ dostosowana do Opery.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__aclocal}
@@ -114,36 +112,36 @@ install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 rm -rf $RPM_BUILD_ROOT
 
 %triggerin -- mozilla-firefox
-%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerun -- mozilla-firefox
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerin -- mozilla
-%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerun -- mozilla
-%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerin -- konqueror
-%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerun -- konqueror
-%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerin -- seamonkey
-%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerun -- seamonkey
-%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,divx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,divx,wmp}.xpt
+%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
