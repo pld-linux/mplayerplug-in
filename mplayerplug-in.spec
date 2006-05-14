@@ -10,6 +10,7 @@ Group:		X11/Applications/Multimedia
 Source0:	http://mplayerplug-in.sourceforge.net/mplayerplug-in-daily.tar.gz
 # Source0-md5:	571b6c169df405bd732eb29ddc069d37
 Patch0:		%{name}-opera.patch
+Patch1:		%{name}-divx.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -74,6 +75,7 @@ dostosowana do Opery.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal}
