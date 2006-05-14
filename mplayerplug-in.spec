@@ -85,6 +85,7 @@ dostosowana do Opery.
 %{__make}
 mkdir -p opera
 mv -f *.so opera/
+mv -f *.xpt opera/
 
 # other (with no limited features)
 %configure \
@@ -101,6 +102,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/opera/plugins,%{_plugindir},%{_sysconfdir}
 install *.so $RPM_BUILD_ROOT%{_plugindir}
 install *.xpt $RPM_BUILD_ROOT%{_plugindir}
 install opera/*.so $RPM_BUILD_ROOT%{_libdir}/opera/plugins
+install opera/*.xpt $RPM_BUILD_ROOT%{_libdir}/opera/plugins
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 
