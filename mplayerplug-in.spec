@@ -47,7 +47,7 @@ Obs³ugiwane przegl±darki: %{browsers}.
 Summary:	Common files for %{name}
 Summary(pl):	Wspólne pliki dla %{name}
 Group:		X11/Applications/Multimedia
-Requires:	mplayer >= 1:1.0-0.pre5
+Requires:	mplayer >= 1:1.0-2.pre7try3
 
 %description common
 This package provides common files for %{name}.
