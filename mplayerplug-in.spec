@@ -3,7 +3,7 @@ Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 %define	snap	20060827
 Version:	3.30
-Release:	1.%{snap}.1
+Release:	1.%{snap}.2
 License:	GPL
 Group:		X11/Applications/Multimedia
 # Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
