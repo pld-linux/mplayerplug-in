@@ -8,7 +8,7 @@ License:	GPL
 Group:		X11/Applications/Multimedia
 # Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
 Source0:	http://mplayerplug-in.sourceforge.net/mplayerplug-in-daily.tar.gz
-# Source0-md5:	962ba65b49a977a9f0417f5e666f732b
+# Source0-md5:	0be2b08a40d35ea1062be00675ee3c26
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
 URL:		http://mplayerplug-in.sourceforge.net/
@@ -29,7 +29,7 @@ Obsoletes:	opera-plugin-mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_plugindir	%{_libdir}/browser-plugins
-%define		browsers	mozilla, mozilla-firefox, konqueror, seamonkey
+%define		browsers	mozilla, mozilla-firefox, mozilla-firefox-bin, konqueror, seamonkey
 
 %description
 mplayerplug-in is a browser plugin that uses mplayer to play videos
@@ -120,6 +120,14 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- mozilla-firefox
 %nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
 %nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
+
+%triggerin -- mozilla-firefox-bin
+%nsplugin_install -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_install -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
+
+%triggerun -- mozilla-firefox-bin
+%nsplugin_uninstall -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
+%nsplugin_uninstall -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
 
 %triggerin -- mozilla
 %nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
