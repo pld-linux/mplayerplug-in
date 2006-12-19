@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.
 # Source0-md5:	5efa01fa433ee4c7118e534c36198e72
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
+Patch2:		%{name}-g_idle_add-fix.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -18,7 +19,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-firefox-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.236
-BuildRequires:	xorg-lib-libXpm-devel
+#BuildRequires:	xorg-lib-libXpm-devel
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	browser-plugins(%{_target_base_arch})
 Obsoletes:	konqueror-plugin-mplayer
@@ -75,6 +76,7 @@ dostosowana do Opery.
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__aclocal}
