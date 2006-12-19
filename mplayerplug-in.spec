@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-g_idle_add-fix.patch
+Patch3:		%{name}-x86_64link.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -77,6 +78,7 @@ dostosowana do Opery.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__aclocal}
