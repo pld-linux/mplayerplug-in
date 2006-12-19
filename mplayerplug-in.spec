@@ -19,7 +19,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-firefox-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.236
-#BuildRequires:	xorg-lib-libXpm-devel
+BuildRequires:	xorg-lib-libXpm-devel
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	browser-plugins(%{_target_base_arch})
 Obsoletes:	konqueror-plugin-mplayer
