@@ -10,7 +10,6 @@ Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-g_idle_add-fix.patch
-Patch3:		%{name}-x86_64link.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -78,17 +77,15 @@ dostosowana do Opery.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal}
 %{__autoconf}
 
+# don't use --enable-x86_64 on x86_64, this builds 32-bit version on x86_64 host
+
 # for opera (works only with X toolkit)
 %configure \
-%if "%{_lib}" == "lib64"
-        --enable-x86_64 \
-%endif
 	--enable-x
 %{__make}
 mkdir -p opera
@@ -97,9 +94,6 @@ mv -f *.xpt opera/
 
 # other (with no limited features)
 %configure \
-%if "%{_lib}" == "lib64"
-        --enable-x86_64 \
-%endif
 	--enable-gtk2
 %{__make}
 
