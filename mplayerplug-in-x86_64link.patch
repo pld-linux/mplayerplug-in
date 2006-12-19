@@ -1,0 +1,11 @@
+--- mplayerplug-in/configure.in	2006-12-18 16:56:50.000000000 +0100
++++ mplayerplug-in/configure.in-new	2006-12-19 08:27:12.000000000 +0100
+@@ -113,7 +113,7 @@
+   
+ if test $use_64 = yes; then
+    CXXFLAGS64="-m32"
+-   LDFLAGS64="-melf_i386"
++   LDFLAGS64=""
+ fi   
+    
+ AC_ARG_ENABLE(wmp,
