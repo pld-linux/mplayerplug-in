@@ -1,11 +1,18 @@
+#
+# Conditional build:
+%bcond_without	opera		# do not build without limited features: for opera
+#
+%ifnarch %{ix86} ppc sparc sparc64
+%undefine	with_opera
+%endif
 Summary:	Embedded Video Player for Mozilla
 Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 Version:	3.35
-Release:	3
+Release:	3.2
 License:	GPL
 Group:		X11/Applications/Multimedia
-Source0:	http://dl.sourceforge.net/mplayerplug-in/mplayerplug-in-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/mplayerplug-in/%{name}-%{version}.tar.gz
 # Source0-md5:	5efa01fa433ee4c7118e534c36198e72
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
@@ -19,10 +26,11 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	mozilla-firefox-devel
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.236
+BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXt-devel
 Requires:	%{name}-common = %{version}-%{release}
+Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
 Obsoletes:	konqueror-plugin-mplayer
 Obsoletes:	mozilla-firefox-plugin-mplayer
@@ -30,20 +38,13 @@ Obsoletes:	mozilla-plugin-mplayer
 Obsoletes:	opera-plugin-mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_plugindir	%{_libdir}/browser-plugins
-%define		browsers	mozilla, mozilla-firefox, mozilla-firefox-bin, konqueror, seamonkey
-
 %description
 mplayerplug-in is a browser plugin that uses mplayer to play videos
 from websites.
 
-Supported browsers: %{browsers}.
-
 %description -l pl
 mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
 odtwarzania klipów filmowych ze stron WWW.
-
-Obs³ugiwane przegl±darki: %{browsers}.
 
 %package common
 Summary:	Common files for %{name}
@@ -71,8 +72,8 @@ from websites. This plugin is adapted for Opera.
 
 %description opera -l pl
 mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
-odtwarzania klipów filmowych ze stron WWW. Ta wtyczka jest
-dostosowana do Opery.
+odtwarzania klipów filmowych ze stron WWW. Ta wtyczka jest dostosowana
+do Opery.
 
 %prep
 %setup -q -n %{name}
@@ -87,13 +88,14 @@ dostosowana do Opery.
 
 # don't use --enable-x86_64 on x86_64, this builds 32-bit version on x86_64 host
 
+%if %{with opera}
 # for opera (works only with X toolkit)
 %configure \
 	--enable-x
 %{__make}
 mkdir -p opera
-mv -f *.so opera/
-mv -f *.xpt opera/
+mv -f *.so *.xpt opera
+%endif
 
 # other (with no limited features)
 %configure \
@@ -102,15 +104,16 @@ mv -f *.xpt opera/
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_libdir}/opera/plugins,%{_plugindir},%{_sysconfdir}/mplayer}
+install -d $RPM_BUILD_ROOT{%{_libdir}/opera/plugins,%{_browserpluginsdir},%{_sysconfdir}/mplayer}
 
 %{__make} install -C po \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install *.so $RPM_BUILD_ROOT%{_plugindir}
-install *.xpt $RPM_BUILD_ROOT%{_plugindir}
+install *.so *.xpt $RPM_BUILD_ROOT%{_browserpluginsdir}
+%if %{with opera}
 install opera/*.so $RPM_BUILD_ROOT%{_libdir}/opera/plugins
 install opera/*.xpt $RPM_BUILD_ROOT%{_libdir}/opera/plugins
+%endif
 install mplayerplug-in.conf $RPM_BUILD_ROOT%{_sysconfdir}
 install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 
@@ -119,50 +122,18 @@ install mplayerplug-in.types $RPM_BUILD_ROOT%{_sysconfdir}/mplayer
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%triggerin -- mozilla-firefox
-%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
+%post
+%update_browser_plugins
 
-%triggerun -- mozilla-firefox
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerin -- mozilla-firefox-bin
-%nsplugin_install -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerun -- mozilla-firefox-bin
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/mozilla-firefox-bin/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerin -- mozilla
-%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_install -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerun -- mozilla
-%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/mozilla/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerin -- konqueror
-%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_install -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerun -- konqueror
-%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/kde3/plugins/konqueror %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerin -- seamonkey
-%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_install -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
-
-%triggerun -- seamonkey
-%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.so %{name}-{gmp,qt,rm,dvx,wmp}.so
-%nsplugin_uninstall -d %{_libdir}/seamonkey/plugins %{name}.xpt %{name}-{gmp,qt,rm,dvx,wmp}.xpt
+%postun
+if [ "$1" = 0 ]; then
+	%update_browser_plugins
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_plugindir}/*.so
-%{_plugindir}/*.xpt
+%attr(755,root,root) %{_browserpluginsdir}/*.so
+%{_browserpluginsdir}/*.xpt
 
 %files common
 %defattr(644,root,root,755)
@@ -170,7 +141,9 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mplayerplug-in.conf
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mplayer/mplayerplug-in.types
 
+%if %{with opera}
 %files opera
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/opera/plugins/*.so
 %{_libdir}/opera/plugins/*.xpt
+%endif
