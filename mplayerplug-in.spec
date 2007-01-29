@@ -26,6 +26,8 @@ BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.357
+BuildRequires:	xorg-lib-libXpm-devel
+BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xulrunner-devel
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	browser-plugins >= 2.0
