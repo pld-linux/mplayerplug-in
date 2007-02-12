@@ -1,7 +1,7 @@
 # TODO
 # - cvs move SPECS/{mozilla-plugin-mplayer,mplayerplug-in}.spec,v
 Summary:	Embedded Video Player for Mozilla
-Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
+Summary(pl.UTF-8):   Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 Version:	2.85
 Release:	0.13
@@ -40,9 +40,9 @@ from websites.
 
 Supported browsers: %{browsers}.
 
-%description -l pl
-mplayerplug-in jest wtyczk± wykorzystuj±c± mplayera do odtwarzania
-klipów filmowych ze stron WWW.
+%description -l pl.UTF-8
+mplayerplug-in jest wtyczkÄ… wykorzystujÄ…cÄ… mplayera do odtwarzania
+klipÃ³w filmowych ze stron WWW.
 
 %prep
 %setup -q -n %{name}
