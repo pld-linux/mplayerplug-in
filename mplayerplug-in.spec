@@ -6,7 +6,7 @@
 %undefine	with_opera
 %endif
 Summary:	Embedded Video Player for Mozilla
-Summary(pl):	Osadzony odtwarzacz wideo dla Mozilli
+Summary(pl.UTF-8):   Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 Version:	3.35
 Release:	4
@@ -42,25 +42,25 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 mplayerplug-in is a browser plugin that uses mplayer to play videos
 from websites.
 
-%description -l pl
-mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
-odtwarzania klipów filmowych ze stron WWW.
+%description -l pl.UTF-8
+mplayerplug-in jest wtyczkÄ… przeglÄ…darki wykorzystujÄ…cÄ… mplayera do
+odtwarzania klipÃ³w filmowych ze stron WWW.
 
 %package common
 Summary:	Common files for %{name}
-Summary(pl):	Wspólne pliki dla %{name}
+Summary(pl.UTF-8):   WspÃ³lne pliki dla %{name}
 Group:		X11/Applications/Multimedia
 Requires:	mplayer >= 1:1.0-2.pre7try3
 
 %description common
 This package provides common files for %{name}.
 
-%description common -l pl
-Ten pakiet dostarcza wspólne pliki dla %{name}.
+%description common -l pl.UTF-8
+Ten pakiet dostarcza wspÃ³lne pliki dla %{name}.
 
 %package opera
 Summary:	Embedded Video Player for Opera
-Summary(pl):	Osadzony odtwarzacz wideo dla Opery
+Summary(pl.UTF-8):   Osadzony odtwarzacz wideo dla Opery
 Group:		X11/Applications/Multimedia
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	opera
@@ -70,9 +70,9 @@ Obsoletes:	opera-plugin-mplayer
 mplayerplug-in is a browser plugin that uses mplayer to play videos
 from websites. This plugin is adapted for Opera.
 
-%description opera -l pl
-mplayerplug-in jest wtyczk± przegl±darki wykorzystuj±c± mplayera do
-odtwarzania klipów filmowych ze stron WWW. Ta wtyczka jest dostosowana
+%description opera -l pl.UTF-8
+mplayerplug-in jest wtyczkÄ… przeglÄ…darki wykorzystujÄ…cÄ… mplayera do
+odtwarzania klipÃ³w filmowych ze stron WWW. Ta wtyczka jest dostosowana
 do Opery.
 
 %prep
