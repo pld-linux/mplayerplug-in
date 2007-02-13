@@ -6,7 +6,7 @@
 %undefine	with_opera
 %endif
 Summary:	Embedded Video Player for Mozilla
-Summary(pl.UTF-8):   Osadzony odtwarzacz wideo dla Mozilli
+Summary(pl.UTF-8):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
 Version:	3.35
 Release:	4
@@ -48,7 +48,7 @@ odtwarzania klipów filmowych ze stron WWW.
 
 %package common
 Summary:	Common files for %{name}
-Summary(pl.UTF-8):   Wspólne pliki dla %{name}
+Summary(pl.UTF-8):	Wspólne pliki dla %{name}
 Group:		X11/Applications/Multimedia
 Requires:	mplayer >= 1:1.0-2.pre7try3
 
@@ -60,7 +60,7 @@ Ten pakiet dostarcza wspólne pliki dla %{name}.
 
 %package opera
 Summary:	Embedded Video Player for Opera
-Summary(pl.UTF-8):   Osadzony odtwarzacz wideo dla Opery
+Summary(pl.UTF-8):	Osadzony odtwarzacz wideo dla Opery
 Group:		X11/Applications/Multimedia
 Requires:	%{name}-common = %{version}-%{release}
 Requires:	opera
