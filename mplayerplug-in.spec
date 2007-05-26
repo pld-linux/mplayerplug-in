@@ -8,16 +8,15 @@
 Summary:	Embedded Video Player for Mozilla
 Summary(pl.UTF-8):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
-Version:	3.35
-Release:	4
+Version:	3.40
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/mplayerplug-in/%{name}-%{version}.tar.gz
-# Source0-md5:	5efa01fa433ee4c7118e534c36198e72
+# Source0-md5:	eaeb723a346570a0e3859c7b056a513f
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
-Patch2:		%{name}-g_idle_add-fix.patch
-Patch3:		%{name}-c.patch
+Patch2:		%{name}-c.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -80,13 +79,10 @@ do Opery.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 %{__aclocal}
 %{__autoconf}
-
-# don't use --enable-x86_64 on x86_64, this builds 32-bit version on x86_64 host
 
 %if %{with opera}
 # for opera (works only with X toolkit)
