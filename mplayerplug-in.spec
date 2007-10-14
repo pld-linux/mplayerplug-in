@@ -8,12 +8,12 @@
 Summary:	Embedded Video Player for Mozilla
 Summary(pl.UTF-8):	Osadzony odtwarzacz wideo dla Mozilli
 Name:		mplayerplug-in
-Version:	3.40
+Version:	3.45
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/mplayerplug-in/%{name}-%{version}.tar.gz
-# Source0-md5:	eaeb723a346570a0e3859c7b056a513f
+# Source0-md5:	b44be48b2d34e6509b8f12597da7a712
 Patch0:		%{name}-opera.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-c.patch
