@@ -20,7 +20,7 @@ Patch2:		%{name}-xul.patch
 URL:		http://mplayerplug-in.sourceforge.net/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
